@@ -1,0 +1,46 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+<h2>Warenkorb</h2><hr/>
+
+<table border=0>
+    <tr>
+        <td WIDTH="80">
+            <b>Art.-Nr.</b>
+        </td>
+        <td WIDTH="420">
+            <b>Bezeichnung</b>
+        </td>
+        <td WIDTH="70">
+            <b>Preis</b>
+        </td>
+        <td WIDTH="40">
+            <b>&nbsp</b>
+        </td>
+    </tr>
+    {% for ware in waren %}
+    <tr>
+        <td WIDTH="70">
+            {{ ware.id }}
+        </td>
+        <td WIDTH="420">
+            {{ ware.name }}
+        </td>
+        <td WIDTH="70">
+            {{ ware.preis }}
+        </td>
+        <td WIDTH="40">
+            <a href="loesch.php?id={{ ware.id }}" class="del">L&ouml;schen</a>
+        </td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="4">
+            <em>keine waren im Korb</em>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+<br />
+<b>Gesamt:</b> {{ preis }} Euro
+{% endblock %}

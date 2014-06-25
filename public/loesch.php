@@ -1,13 +1,11 @@
 <?php
-require_once(__DIR__.'/../oben.php');
+require_once(__DIR__.'/../common.php');
 
-// Wenn kein Produkt ausgew�hlt wurde, oder
-// das Produkt nicht im Warenkorb ist...
-if (!isset($_GET['id']) ||
-    !in_array($_GET['id'], $_SESSION['warenkorb'])) {
+$msgs = array();
 
-  print("Sie haben dieses Produkt noch nicht bestellt,
-         oder kein Produkt ausgew&auml;hlt.");
+if (!isset($_GET['id']) || !in_array($_GET['id'], $_SESSION['warenkorb'])) {
+  $msgs[] = 'Sie haben dieses Produkt noch nicht bestellt,
+         oder kein Produkt ausgewaehlt.';
 }
 else {
   foreach ($_SESSION['warenkorb'] as $id => $produkt) {
@@ -15,14 +13,9 @@ else {
       unset($_SESSION['warenkorb'][$id]);
     }
   }
-  print "<p>Das Produkt wurde aus dem Warenkorb gel&ouml;scht.</p>";
+    $msgs[] = 'Das Produkt wurde aus dem Warenkorb gel&ouml;scht.';
 }
-?>
-<p><a href="korb.php">
-	Zum Warenkorb</a></p>
-  <p><a href="index.php">
-    Zu den Produkten
-  </a></p>
-</div>
-</body>
-</html>
+
+echo $twig->render('loeschen.twig', array('msgs' => $msgs));
+
+

@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__.'/../oben.php');
+//TODO twig
+require_once(__DIR__.'/../common.php');
 ?>
 <h2>Kasse</h2>
 <hr>

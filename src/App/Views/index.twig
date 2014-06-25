@@ -1,0 +1,36 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h2>Produkte</h2><hr/>
+    {% for ware in waren %}
+    <fieldset>
+        <legend>
+            {{ ware.name }}
+        </legend>
+        <table>
+            <tr>
+                <td>
+                    {{ ware.title }}
+                </td>
+                <td>
+                    <ul type="square">
+                        <li>Preis:</li>
+                        <ul>
+                            <li>Euro {{ ware.preis }}</li>
+                        </ul>
+                        <li>Genaue Beschreibung:</li>
+                        <ul>
+                            <li> {{ ware.text }}</li>
+                        </ul>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <a href="../setkorb.php?id={{ ware.id }}">In den Warenkorb</a>
+        <br>
+    </fieldset>
+    <br />
+    <br />
+    {% endfor %}
+
+{% endblock %}
