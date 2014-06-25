@@ -152,7 +152,7 @@ if (isset($_SESSION['warenkorb']) &&
 	  else {  //Falls das Formular noch nicht abgeschickt wurde, wird es fuer die Benutzung angezeigt.
 	  ?>
 	  <!-------1ste Formular.--------->
-	    <form action="kasse1.php?<?php echo SID; ?>" method="POST">
+	    <form action="kasse1.php" method="POST">
 <fieldset>
 <label class="formleft" for="email">E-Mail</label>
 <input type="text" name="email"><br>
@@ -168,7 +168,6 @@ if (isset($_SESSION['warenkorb']) &&
 <input type="text" name="ort"><br>
 <label class="formleft" for="land">Land</label>
 <input type="text" name="land" value="Deutschland"><br>
-<input type="hidden" name="sesid" value="<?php echo SID; ?>">
 </fieldset>
 <br>
 <input type="submit" class="formsubmit" value="Weiter">
@@ -185,12 +184,11 @@ if (isset($_SESSION['warenkorb']) &&
 		<!-------Das erste Formular wurde erfolgreich ausgewertet? Dann geht's hierhin. Dieses Formular wird dann zur Datei kasse2.php geschickt.--------->
 				<p>2. Bitte w&auml;hlen Sie die Versandart aus</p>
 				
-				<form action="kasse2.php?<?php echo SID; ?>" method="POST">
+				<form action="kasse2.php" method="POST">
 				<p><select name="versandart">
 				<option value="Standartversand">Standard (+ Euro 1.45)</option>
 				<option value="Versandee">Einwurf-Einschreiben (+ Euro 3.00)</option>
 				<option value="Versandae">Abgabe-Einschreiben (+ Euro 3.50)</option></select></p>
-				<input type="hidden" name="sesid" value="<?php echo SID; ?>">
 				<input type="hidden" name="name" value="<? echo $ubern ?>">
 				
 				<p class="kasse">3. Bitte w&auml;hlen Sie die Zahlungsmethode aus</p>

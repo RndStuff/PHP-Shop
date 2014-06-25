@@ -10,7 +10,6 @@ if (isset($_POST['lol']))
 	$methode2 = $_POST['methode'];
 	$pp = $_POST['preis'];
 	$vv = $_POST['versand'];
-	$ss = SID;
 			if ($vv=="Standartversand") {
 				$nv="Standardversand";
 			}
@@ -20,7 +19,7 @@ if (isset($_POST['lol']))
 			else if ($vv=="Versandae") {
 				$nv="Versand via Abgabe-Einschreiben";
 			}
-	$r_o="SELECT * FROM tbl_data WHERE sid='$ss'";
+	$r_o="SELECT * FROM tbl_data WHERE sid='session_id()'";
 	$query3=mysql_query($r_o);
 	while ($hh=mysql_fetch_array($query3)){
 	
@@ -148,8 +147,7 @@ if (isset($_SESSION['warenkorb']) && !empty($_SESSION['warenkorb']))
                 htmlentities($waren[$id]['nr']),
                htmlentities($waren[$id]['name']),
 			   htmlentities($waren[$id]['preis']),
-			   $id,
-               SID
+			   $id
               );
               //Noch schnell den Preis mit den oben und hier festgelegten Zusaetzen veraendern.
 			  $preis+=$waren[$id]['preis']; 
@@ -189,7 +187,7 @@ if (isset($_SESSION['warenkorb']) && !empty($_SESSION['warenkorb']))
 	<?php
 		 //Hier wird dann alles in die Datenbank eingetragen.
 		$datum=date("Y-m-d H:i:s");
-		$nagut=SID;
+		$nagut= session_id();
 		$eintragen = "INSERT INTO tbl_vm(sid,vart,zm,preis,produkte,datetime) VALUES('$nagut','$versand','$methode','$preis','$pd','$datum')";
 		$query = mysql_query($eintragen);
 		
@@ -219,7 +217,7 @@ if (isset($_SESSION['warenkorb']) && !empty($_SESSION['warenkorb']))
 			}
 		?>	
 		<!-----------Wenn man dieses letztes Formular abschickt, wird es ganz oben in der Datei ausgewertet.---->
-			<FORM action="kasse2.php?<?php echo SID; ?>" method="POST">
+			<FORM action="kasse2.php" method="POST">
 			<input type="hidden" name="lol" value="">
 			<input type="hidden" name="preis" value="<? echo $preis ?>">
 			<input type="hidden" name="versand" value="<? echo $versand ?>">

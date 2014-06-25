@@ -1,9 +1,7 @@
 <?php
-ini_set("session.use_cookies", "0");
-ini_set("url_rewriter.tags",   "");
 
 require_once(__DIR__.'/connect.php');
-
+session_start();
     $query = "SELECT * FROM tbl_artikel";
     $result = mysql_query ( $query );
 

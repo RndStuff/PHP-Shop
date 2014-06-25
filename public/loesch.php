@@ -18,9 +18,9 @@ else {
   print "<p>Das Produkt wurde aus dem Warenkorb gel&ouml;scht.</p>";
 }
 ?>
-<p><a href="korb.php?<?php print SID; ?>">
+<p><a href="korb.php">
 	Zum Warenkorb</a></p>
-  <p><a href="index.php?<?php print SID; ?>">
+  <p><a href="index.php">
     Zu den Produkten
   </a></p>
 </div>

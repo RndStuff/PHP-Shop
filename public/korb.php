@@ -38,15 +38,14 @@ printf('
 <b><p>Euro %01.2f </p></b>
 </td>
 <td WIDTH="40">
-<center><b><p><a href="loesch.php?id=%d&%s" class="del">L&ouml;schen</a></p></b></center>
+<center><b><p><a href="loesch.php?id=%d" class="del">L&ouml;schen</a></p></b></center>
 </td>
 </tr>
 ',
 htmlentities($waren[$id]['nr']),
 htmlentities($waren[$id]['name']),
 htmlentities($waren[$id]['preis']),
-$id,
-SID
+$id
 );
 $preis+=$waren[$id]['preis'];
 }
@@ -81,7 +80,7 @@ $preis+=$waren[$id]['preis'];
 </td>
 </tr>
 </table>
-<p><a href="kasse1.php?<?php print SID; ?>">&raquo;Zur Kasse</a></p><br>
+<p><a href="kasse1.php">&raquo;Zur Kasse</a></p><br>
 <?php
 }
 if(empty($_SESSION['warenkorb'])){

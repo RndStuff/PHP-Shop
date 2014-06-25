@@ -12,8 +12,8 @@ require_once(__DIR__.'/../oben.php');
 
 ?>
 <p>Das Produkt wurde dem Warenkorb hinzugef�gt.</p>
- <a href="korb.php?<?php print SID; ?>">Zum W.Korb</a>
- <a href="index.php?<?php print SID; ?>">Zu den Produkten</a>
+ <a href="korb.php">Zum W.Korb</a>
+ <a href="index.php">Zu den Produkten</a>
  </div>
 </body>
 </html>

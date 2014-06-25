@@ -27,7 +27,7 @@ require_once(__DIR__.'/../oben.php');
 		</td>
 		</tr>
 		</table>
-		<a href="../setkorb.php?id=%d&%s">In den Warenkorb</a>
+		<a href="../setkorb.php?id=%d">In den Warenkorb</a>
 		<br>
 		</fieldset>
 		<br>
@@ -37,8 +37,7 @@ require_once(__DIR__.'/../oben.php');
 	$produkt['titel'],
 	$produkt['preis'],
 	$produkt['text'],
-	$id,
-	SID
+	$id
 	);
 	
   
