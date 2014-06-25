@@ -2,8 +2,6 @@
 ini_set("session.use_cookies", "0");
 ini_set("url_rewriter.tags",   "");
 
-
-session_register('warenkorb');
 include("connect.php");
 
     $query = "SELECT * FROM t_artikel";
