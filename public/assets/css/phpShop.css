@@ -1,0 +1,24 @@
+h2 {
+    font-family: Arial;
+    color:red;
+}
+
+h3 {
+    font-family: Arial;
+    color:orange;
+}
+
+ul li {
+    font-family: Serif;
+    color: grey;
+}
+
+ul li ul li {
+    font-family: Serif;
+    color: grey;
+}
+
+td {
+    font-family: Serif;
+    color: black;
+}
