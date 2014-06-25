@@ -2,7 +2,7 @@
 ini_set("session.use_cookies", "0");
 ini_set("url_rewriter.tags",   "");
 
-include("connect.php");
+require_once(__DIR__.'/connect.php');
 
     $query = "SELECT * FROM t_artikel";
     $result = mysql_query ( $query );
