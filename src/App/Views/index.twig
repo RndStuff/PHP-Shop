@@ -2,35 +2,36 @@
 
 {% block content %}
     <h2>Produkte</h2><hr/>
+    <div class="waren">
+
     {% for ware in waren %}
-    <fieldset>
-        <legend>
+        <div class="ware">
+
+
+    <div class="panel">
+        <div class="panel-heading">
             {{ ware.name }}
-        </legend>
-        <table>
-            <tr>
-                <td>
-                    {{ ware.title }}
-                </td>
-                <td>
-                    <ul type="square">
-                        <li>Preis:</li>
-                        <ul>
-                            <li>Euro {{ ware.preis }}</li>
-                        </ul>
-                        <li>Genaue Beschreibung:</li>
-                        <ul>
-                            <li> {{ ware.text }}</li>
-                        </ul>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-        <a href="../setkorb.php?id={{ ware.id }}">In den Warenkorb</a>
+            <span class="pull-right">
+                <a href="../setkorb.php?id={{ ware.id }}"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+            </span>
+        </div>
+        <div class="panel-body">
+            <ul type="square">
+                <li>Preis:</li>
+                <ul>
+                    <li>Euro {{ ware.preis }}</li>
+                </ul>
+                <li>Genaue Beschreibung:</li>
+                <ul>
+                    <li> {{ ware.text }}</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
         <br>
-    </fieldset>
-    <br />
-    <br />
+        </div>
     {% endfor %}
+    </div>
 
 {% endblock %}
