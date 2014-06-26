@@ -1,86 +1,90 @@
 {% extends 'base.twig' %}
 
 {% block content %}
-<h2>Kasse</h2>
-<hr/>
-    <table border=0>
-        <tr>
-            <td WIDTH="80">
-                <b>Art.-Nr.</b>
-            </td>
-            <td WIDTH="420">
-                <b>Bezeichnung</b>
-            </td>
-            <td WIDTH="70">
-                <b>Preis</b>
-            </td>
-            <td WIDTH="40">
-                &nbsp
-            </td>
-        </tr>
-    {% for ware in waren %}
-        <tr>
-            <td WIDTH="70">
-                {{ ware.id }}
-            </td>
-            <td WIDTH="420">
-                {{ ware.name }}
-            </td>
-            <td WIDTH="70">
-                {{ ware.preis }}
-            </td>
-            <td WIDTH="40">
-                <a href="loesch.php?id={{ ware.id }}" class="del">L&ouml;schen</a>
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="4">
-                <em>keine waren im Korb</em>
-            </td>
-        </tr>
-    {% endfor %}
-    </table>
-    <b><p>Gesamtpreis (ohne Versandgeb&uuml;hren): {{ preis }} Euro</p></b>
-    <hr />
-    <form action="kasse1.php" method=post>
-        <label>1. Bitte geben Sie Ihre Lieferadresse an</label>
-        <fieldset>
-            <label class="formleft" for="email">E-Mail</label>
-            <input type="text" name="email"><br>
-            <label class="formleft" for="name">Name</label>
-            <input type="text" name="name"><br>
-            <label class="formleft" for="zusatz">Zusatz (optional)</label>
-            <input type="text" name="zusatz"><br>
-            <label class="formleft" for="str">Strasse & Nr.</label>
-            <input type="text" name="str"><br>
-            <label class="formleft" for="plz">PLZ</label>
-            <input type="text" name="plz"><br>
-            <label class="formleft" for="ort">Ort</label>
-            <input type="text" name="ort"><br>
-            <label class="formleft" for="land">Land</label>
-            <input type="text" name="land" value="Deutschland"><br>
-        </fieldset>
-        <label>2. Bitte w&auml;hlen Sie die Versandart aus</label>
-        <fieldset>
-        <p><select name="versandart">
-                <option value="Standartversand">Standard (+ Euro 1.45)</option>
-                <option value="Versandee">Einwurf-Einschreiben (+ Euro 3.00)</option>
-                <option value="Versandae">Abgabe-Einschreiben (+ Euro 3.50)</option></select></p>
-        <input type="hidden" name="name" value="<? echo $ubern ?>">
-        </fieldset>
-        <label>3. Bitte w&auml;hlen Sie die Zahlungsmethode aus</label>
 
-        <fieldset>
-            <select name="zmethode">
-                <option value="Vorkasseu">Vorkasse &Uuml;berweisung (keine Zusatzkosten)</option>
-                <option value="Vorkassep">Vorkasse PayPal (keine Zusatzkosten)</option>
-                <option value="Rechnung">Rechnung (+ Euro 2.50)</option>
-                <option value="Nachnahme">Nachnahme per Post (+ Euro 5.00)</option>
-            </select>
-        </fieldset>
-        <br>
-        <input name="submit" type="submit" class="formsubmit" value="Weiter" />
-        <br><br>
-    </form>
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    <h2>Kasse</h2>
+    <hr/>
+        <table border=0>
+            <tr>
+                <td WIDTH="80">
+                    <b>Art.-Nr.</b>
+                </td>
+                <td WIDTH="420">
+                    <b>Bezeichnung</b>
+                </td>
+                <td WIDTH="70">
+                    <b>Preis</b>
+                </td>
+                <td WIDTH="40">
+                    &nbsp
+                </td>
+            </tr>
+        {% for ware in waren %}
+            <tr>
+                <td WIDTH="70">
+                    {{ ware.id }}
+                </td>
+                <td WIDTH="420">
+                    {{ ware.name }}
+                </td>
+                <td WIDTH="70">
+                    {{ ware.preis }}
+                </td>
+                <td WIDTH="40">
+                    <a href="loesch.php?id={{ ware.id }}" class="del">L&ouml;schen</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">
+                    <em>keine waren im Korb</em>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <b><p>Gesamtpreis (ohne Versandgeb&uuml;hren): {{ preis }} Euro</p></b>
+        <hr />
+        <form action="kasse1.php" method=post>
+            <label>1. Bitte geben Sie Ihre Lieferadresse an</label>
+            <fieldset>
+                <label class="formleft" for="email">E-Mail</label>
+                <input type="text" name="email"><br>
+                <label class="formleft" for="kundenName">Name</label>
+                <input type="text" name="kundenName"><br>
+                <label class="formleft" for="zusatz">Zusatz (optional)</label>
+                <input type="text" name="zusatz"><br>
+                <label class="formleft" for="str">Strasse & Nr.</label>
+                <input type="text" name="str"><br>
+                <label class="formleft" for="plz">PLZ</label>
+                <input type="text" name="plz"><br>
+                <label class="formleft" for="ort">Ort</label>
+                <input type="text" name="ort"><br>
+                <label class="formleft" for="land">Land</label>
+                <input type="text" name="land" value="Deutschland"><br>
+            </fieldset>
+            <label>2. Bitte w&auml;hlen Sie die Versandart aus</label>
+            <fieldset>
+            <p><select name="versandart">
+                    <option value="Standartversand">Standard (+ Euro 1.45)</option>
+                    <option value="Versandee">Einwurf-Einschreiben (+ Euro 3.00)</option>
+                    <option value="Versandae">Abgabe-Einschreiben (+ Euro 3.50)</option></select></p>
+            <input type="hidden" name="name" value="">
+            </fieldset>
+            <label>3. Bitte w&auml;hlen Sie die Zahlungsmethode aus</label>
+
+            <fieldset>
+                <select name="zmethode">
+                    <option value="Vorkasseu">Vorkasse &Uuml;berweisung (keine Zusatzkosten)</option>
+                    <option value="Vorkassep">Vorkasse PayPal (keine Zusatzkosten)</option>
+                    <option value="Rechnung">Rechnung (+ Euro 2.50)</option>
+                    <option value="Nachnahme">Nachnahme per Post (+ Euro 5.00)</option>
+                </select>
+            </fieldset>
+            <br>
+            <input name="submit" type="submit" class="formsubmit" value="Weiter" />
+            <br><br>
+        </form>
 {% endblock %}
