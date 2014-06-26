@@ -1,6 +1,8 @@
 <?php
-//TODO all ...
-require_once(__DIR__.'/../common.php');
+require_once(__DIR__.'/../vendor/autoload.php');
+$app = new \App\Application();
+
+$waren = $app->getWaren();
 $korb = array();
 $gesamtPreis = 0;
 foreach($_SESSION['warenkorb'] as $id) {
@@ -79,7 +81,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-echo $twig->render(
+$app->render(
     'kasse1.twig',
     array(
         'waren' => $korb,

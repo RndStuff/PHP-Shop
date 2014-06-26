@@ -1,13 +1,15 @@
 <?php
-require_once(__DIR__.'/../common.php');
+require_once(__DIR__.'/../vendor/autoload.php');
+$app = new \App\Application();
 
+$waren = $app->getWaren();
 $korb = array();
 $gesamtPreis = 0;
 foreach($_SESSION['warenkorb'] as $id) {
     $korb[] = $waren[$id];
     $gesamtPreis += $waren[$id]['preis'];
 }
-echo $twig->render(
+$app->render(
     'korb.twig',
     array(
         'waren' => $korb,

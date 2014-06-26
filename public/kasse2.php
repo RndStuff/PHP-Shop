@@ -1,5 +1,8 @@
 <?php
-require_once(__DIR__.'/../common.php');
+require_once(__DIR__.'/../vendor/autoload.php');
+$app = new \App\Application();
+
+$waren = $app->getWaren();
 
 $zahlungsArten = array(
     'Vorkasseu' => 0.00,
@@ -15,8 +18,7 @@ $versandArten = array(
 );
 
 if (!isset($_SESSION['kasse'])) {
-    header('location: index.php');
-    exit(1);
+    $app->render('index.php');
 }
 
 $korb = array();
@@ -28,8 +30,7 @@ foreach($_SESSION['warenkorb'] as $id) {
 
 if (isset($_POST['submit']))
 {
-    print_r($_SESSION['kasse']);
-    if (mail('doomsta2k7@gmx.de', 'hallo', 'test')) {
+    if (mail('', '', '')) {
         //TODO save order in DB
     } else {
         //TODO add msg
@@ -37,7 +38,7 @@ if (isset($_POST['submit']))
 
 }
 
-echo $twig->render(
+$app->render(
     'kasse2.twig',
     array(
         'waren' => $korb,

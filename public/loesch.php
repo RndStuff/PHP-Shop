@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__.'/../common.php');
+require_once(__DIR__.'/../vendor/autoload.php');
+$app = new \App\Application();
 
 $msgs = array();
 
@@ -16,6 +17,6 @@ else {
     $msgs[] = 'Das Produkt wurde aus dem Warenkorb gel&ouml;scht.';
 }
 
-echo $twig->render('loeschen.twig', array('msgs' => $msgs));
+$app->render('loeschen.twig', array('msgs' => $msgs));
 
 
