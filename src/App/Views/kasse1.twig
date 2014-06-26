@@ -18,23 +18,17 @@
                 <td WIDTH="70">
                     <b>Preis</b>
                 </td>
-                <td WIDTH="40">
-                    &nbsp
-                </td>
             </tr>
         {% for ware in waren %}
             <tr>
-                <td WIDTH="70">
+                <td>
                     {{ ware.id }}
                 </td>
-                <td WIDTH="420">
+                <td>
                     {{ ware.name }}
                 </td>
-                <td WIDTH="70">
+                <td>
                     {{ ware.preis }}
-                </td>
-                <td WIDTH="40">
-                    <a href="loesch.php?id={{ ware.id }}" class="del">L&ouml;schen</a>
                 </td>
             </tr>
         {% else %}

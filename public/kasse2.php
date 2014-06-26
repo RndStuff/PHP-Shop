@@ -14,13 +14,12 @@ $versandArten = array(
     'Versandae' => 3.50,
 );
 
-if ($_SESSION['kasse']) {
+if (!isset($_SESSION['kasse'])) {
     header('location: index.php');
     exit(1);
 }
 
 $korb = array();
-print_r($_SESSION);
 $gesamtPreis = $versandArten[$_SESSION['kasse']['versandart']] + $zahlungsArten[$_SESSION['kasse']['zmethode']];
 foreach($_SESSION['warenkorb'] as $id) {
     $korb[] = $waren[$id];
