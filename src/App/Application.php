@@ -24,17 +24,12 @@ class Application
     const TYPE_DANGER = 'danger';
 
 
-    public function __construct($env = 'dev')
+    public function __construct()
     {
         session_start();
-        $this->loadConfig($env);
-        $this->env = $env;
+        $this->loadConfig();
     }
 
-    public function getEnv()
-    {
-        return $this->env;
-    }
 
     public function getPdo()
     {
@@ -120,7 +115,7 @@ class Application
 
     protected function loadConfig($env)
     {
-        $this->conf = require(ROOT_PATH . '/config/' . $env . '.php');
+        $this->conf = require(ROOT_PATH . '/config/config.php');
     }
 
     public function validateEmail($email)
@@ -139,7 +134,7 @@ class Application
     {
         if (!$this->logger) {
             $this->logger = new Logger('PHP-Shop');
-            $this->logger->pushHandler(new StreamHandler(ROOT_PATH.'/log/'.$this->getEnv().'.log', Logger::INFO));
+            $this->logger->pushHandler(new StreamHandler(ROOT_PATH.'/log/main.log', Logger::INFO));
         }
         return $this->logger;
     }
