@@ -2,7 +2,8 @@
 
 namespace App;
 
-use PDO;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 
@@ -13,17 +14,25 @@ class Application
     public $conf = array();
     private $pdo;
     private $twig;
-
+    private $env;
+    private $logger;
 
     const TYPE_SUCCESS = 'success';
     const TYPE_INFO = 'info';
     const TYPE_WARNING = 'warning';
     const TYPE_DANGER = 'danger';
 
+
     public function __construct($env = 'dev')
     {
         session_start();
         $this->loadConfig($env);
+        $this->env = $env;
+    }
+
+    public function getEnv()
+    {
+        return $this->env;
     }
 
     public function getPdo()
@@ -34,6 +43,7 @@ class Application
                 $this->conf['pdo']['user'],
                 $this->conf['pdo']['pass']
             );
+            $this->pdo->setLogger($this->getLogger());
         }
         return $this->pdo;
     }
@@ -94,5 +104,26 @@ class Application
     protected function loadConfig($env)
     {
         $this->conf = require(ROOT_PATH . '/config/' . $env . '.php');
+    }
+
+    public function validateEmail($email)
+    {
+        $pattern = "/[a-zA-Z0-9_-.+]+@[a-zA-Z0-9-]+.[a-zA-Z]+/";
+        return (bool) preg_match($pattern, $email);
+    }
+
+    public function mail($string, $string1, $string2)
+    {
+        $this->addNotification('TODO implemt app::mail');
+        return true;
+    }
+
+    private function getLogger()
+    {
+        if (!$this->logger) {
+            $this->logger = new Logger('PHP-Shop');
+            $this->logger->pushHandler(new StreamHandler(ROOT_PATH.'/log/'.$this->getEnv().'.log', Logger::INFO));
+        }
+        return $this->logger;
     }
 } 

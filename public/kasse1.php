@@ -14,7 +14,7 @@ $errors = array();
 if (isset($_POST['submit'])) {
     if (isset($_POST['email']) && !empty($_POST['email'])) {
 
-        if (!validateEmail($_POST['email'])) {
+        if (!$app->validateEmail($_POST['email'])) {
             $_SESSION['kasse']['email'] = $_POST['email'];
         } else {
             $errors[] = 'given email was invalid';

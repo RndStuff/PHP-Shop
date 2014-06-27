@@ -1,3 +1,4 @@
 /.idea
 PHP-Shop.iml
 /vendor/
+*.log
