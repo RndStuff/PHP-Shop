@@ -5,7 +5,8 @@ $app = new \App\Application();
 if(!isset($_GET['id'])){
     die("Kein Produkt wurde ausgew�hlt.");
 }
-if(!isset($_SESSION['warenkorb']) || !in_array($_GET['id'], $_SESSION['warenkorb'])) {
-   $_SESSION['warenkorb'][]=$_GET['id'];
-}
+
+$waren = $app->getWaren();
+$app->getWarenkorb()->addWare($waren[$_GET['id']]);
+$app->addNotification('Die Ware wurde Ihrem Warenkorb hinzugefuegt');
 $app->render('setkorb.twig');

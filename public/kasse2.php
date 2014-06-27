@@ -21,12 +21,12 @@ if (!isset($_SESSION['kasse'])) {
     $app->render('index.php');
 }
 
-$korb = array();
-$gesamtPreis = $versandArten[$_SESSION['kasse']['versandart']] + $zahlungsArten[$_SESSION['kasse']['zmethode']];
-foreach($_SESSION['warenkorb'] as $id) {
-    $korb[] = $waren[$id];
-    $gesamtPreis += $waren[$id]['preis'];
-}
+$warenkorb = $app->getWarenkorb();
+$versandartKosten = $versandArten[$_SESSION['kasse']['versandart']];
+$zahlungsArtKosten = $zahlungsArten[$_SESSION['kasse']['zmethode']];
+
+$gesamtPreis = $versandartKosten + $zahlungsArtKosten + $warenkorb->getPreis();
+
 
 if (isset($_POST['submit']))
 {

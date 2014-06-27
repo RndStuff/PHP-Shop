@@ -16,6 +16,7 @@ class Application
     private $twig;
     private $env;
     private $logger;
+    private $warenkorb;
 
     const TYPE_SUCCESS = 'success';
     const TYPE_INFO = 'info';
@@ -66,13 +67,29 @@ class Application
         exit(1);
     }
 
+    public function getWarenkorb()
+    {
+        if (!$this->warenkorb) {
+            $this->warenkorb = new Warenkorb();
+        }
+        return $this->warenkorb;
+    }
+
+    /**
+     * @return Ware[]
+     */
     public function getWaren()
     {
         $sql = 'SELECT * FROM tbl_artikel';
         $result = $this->getPdo()->query($sql);
         $waren = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $waren[$row['id']] = $row;
+            $waren[$row['id']] = new Ware(
+                $row['id'],
+                $row['bezeichnung'],
+                $row['beschreibung'],
+                $row['preis']
+            );
         }
         return $waren;
     }

@@ -15,13 +15,13 @@
         {% for ware in waren %}
             <tr>
                 <td>{{ ware.id }}</td>
-                <td>{{ ware.bzeichnung }}</td>
+                <td>{{ ware.bezeichnung }}</td>
                 <td>{{ ware.preis }}</td>
             </tr>
         {% else %}
             <tr>
                 <td colspan="4">
-                    <em>keine waren im Korb</em>
+                    <em>keine Waren im Korb</em>
                 </td>
             </tr>
         {% endfor %}
