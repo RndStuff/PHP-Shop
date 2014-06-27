@@ -4,55 +4,37 @@
     <h2>Kasse</h2>
     <hr />
 
-<table border=0>
-    <tr>
-        <td>
-            Art.-Nr.
-        </td>
-        <td WIDTH="420">
-            Bezeichnung
-        </td>
-        <td WIDTH="70">
-            Preis
-        </td>
-    </tr>
-    {% for ware in waren %}
-        <tr>
-            <td WIDTH="70">
-                {{ ware.id }}
-            </td>
-            <td WIDTH="420">
-                {{ ware.name }}
-            </td>
-            <td WIDTH="70">
-                {{ ware.preis }} Euro
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="4">
-                <em>keine waren im Korb</em>
-            </td>
-        </tr>
-    {% endfor %}
-    <tr> <td WIDTH="70"> <b><p>&nbsp</p></b></td> <td WIDTH="420"> <b><p>&nbsp</p></b></td> <td WIDTH="70"> <b><p>&nbsp</p></b></td> <td WIDTH="40"><center><b><p>&nbsp</p></b></center></td></tr>
-    <tr>
-        <td WIDTH="70">
-            <b><p>&nbsp</p></b>
-        </td>
-        <td WIDTH="420">
-            <b><p>Gesamtpreis (inkl. aller Zusatzgeb&uuml;hren):</p></b>
-        </td>
-        <td WIDTH="75">
-            <b><p> {{ preis }} Euro</p></b>
-        </td>
-    </tr>
-</table>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Art.-Nr.</td>
+                <td>Bezeichnung</td>
+                <td>Preis</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ware in waren %}
+            <tr>
+                <td>{{ ware.id }}</td>
+                <td>{{ ware.bezeichnung }}</td>
+                <td {{ ware.preis }} Euro</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">
+                    <em>keine waren im Korb</em>
+                </td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td colspan="4">
+                    <b>Gesamtpreis (inkl. aller Zusatzgeb&uuml;hren): {{ preis }} Euro</b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     <form action="kasse2.php" method="POST">
-        <input type="hidden" name="preis" value="<? echo $preis ?>">
-        <input type="hidden" name="versand" value="<? echo $versand ?>">
-        <input type="hidden" name="methode" value="<? echo $methode ?>">
         <input type="submit" class="formsubmit" name="submit" value="Abschlie&szlig;en">
     </form>
 {% endblock %}

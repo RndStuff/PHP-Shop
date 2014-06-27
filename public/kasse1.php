@@ -23,8 +23,8 @@ if (isset($_POST['submit'])) {
         $errors[] = 'no email adress';
     }
 
-    if (isset($_POST['kundenName']) && !empty($_POST['kundenName'])) {
-        $_SESSION['kasse']['kundenName'] = $_POST['kundenName'];
+    if (isset($_POST['name']) && !empty($_POST['name'])) {
+        $_SESSION['kasse']['name'] = $_POST['name'];
     } else {
         $errors[] = 'no name';
     }
