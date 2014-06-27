@@ -79,14 +79,17 @@ if (isset($_POST['submit'])) {
         header('location: kasse2.php');
         exit(1);
     }
+    foreach($errors as $error) {
+        $app->addNotification($error, $app::TYPE_WARNING);
+    }
 }
+
 
 $app->render(
     'kasse1.twig',
     array(
         'waren' => $korb,
         'preis' => $gesamtPreis,
-        'errors' => $errors,
     )
 );
 

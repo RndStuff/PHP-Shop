@@ -14,6 +14,12 @@ class Application
     private $pdo;
     private $twig;
 
+
+    const TYPE_SUCCESS = 'success';
+    const TYPE_INFO = 'info';
+    const TYPE_WARNING = 'warning';
+    const TYPE_DANGER = 'danger';
+
     public function __construct($env = 'dev')
     {
         session_start();
@@ -65,6 +71,24 @@ class Application
     {
         header('location: '.$url);
         exit(1);
+    }
+
+    public function addNotification($text, $type = self::TYPE_INFO)
+    {
+        $_SESSION['app.notifications'][] = array(
+            'type' => $type,
+            'body' => $text
+        );
+    }
+
+    public function getNotifications()
+    {
+        $result = array();
+        if (is_array($_SESSION['app.notifications'])) {
+            $result = $_SESSION['app.notifications'];
+        }
+        $_SESSION['app.notifications'] = array();
+        return $result;
     }
 
     protected function loadConfig($env)
