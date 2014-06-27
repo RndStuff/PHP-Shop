@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
 $app->render(
     'kasse1.twig',
     array(
-        'waren' => $app->getWaren(),
+        'waren' => $app->getWarenkorb()->getWaren(),
         'preis' => $app->getWarenkorb()->getPreis(),
     )
 );

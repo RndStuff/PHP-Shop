@@ -87,8 +87,8 @@ class Application
             $waren[$row['id']] = new Ware(
                 $row['id'],
                 $row['bezeichnung'],
-                $row['beschreibung'],
-                $row['preis']
+                $row['preis'],
+                $row['beschreibung']
             );
         }
         return $waren;
