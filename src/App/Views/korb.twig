@@ -6,32 +6,18 @@
 <table class="table">
     <thead>
         <tr>
-            <td>
-                <b>Art.-Nr.</b>
-            </td>
-            <td>
-                <b>Bezeichnung</b>
-            </td>
-            <td>
-                <b>Preis</b>
-            </td>
-            <td>
-                <b>&nbsp</b>
-            </td>
+            <td>Art.-Nr.</td>
+            <td>Bezeichnung</td>
+            <td>Preis</td>
+            <td>&nbsp</td>
         </tr>
     </thead>
     <tbody>
         {% for ware in waren %}
         <tr>
-            <td>
-                {{ ware.id }}
-            </td>
-            <td>
-                {{ ware.bezeichnung }}
-            </td>
-            <td>
-                {{ ware.preis }}
-            </td>
+            <td>{{ ware.id }}</td>
+            <td>{{ ware.bezeichnung }}</td>
+            <td>{{ ware.preis }}</td>
             <td>
                 <a href="loesch.php?id={{ ware.id }}" class="del">L&ouml;schen</a>
             </td>

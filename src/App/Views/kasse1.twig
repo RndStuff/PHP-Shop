@@ -5,30 +5,18 @@
     <hr/>
     <table class="table">
         <thead>
-        <tr>
-            <td>
-                <b>Art.-Nr.</b>
-            </td>
-            <td>
-                <b>Bezeichnung</b>
-            </td>
-            <td>
-                <b>Preis</b>
-            </td>
-        </tr>
+            <tr>
+                <td>Art.-Nr.</td>
+                <td>Bezeichnung</td>
+                <td>Preis</td>
+            </tr>
         </thead>
         <tbody>
         {% for ware in waren %}
             <tr>
-                <td>
-                    {{ ware.id }}
-                </td>
-                <td>
-                    {{ ware.bzeichnung }}
-                </td>
-                <td>
-                    {{ ware.preis }}
-                </td>
+                <td>{{ ware.id }}</td>
+                <td>{{ ware.bzeichnung }}</td>
+                <td>{{ ware.preis }}</td>
             </tr>
         {% else %}
             <tr>
