@@ -70,10 +70,9 @@ if (isset($_POST['submit'])) {
     }
 
     if (count($errors) === 0) {
-        header('location: kasse2.php');
-        exit(1);
+        $app->redirect('kasse2.php');
     }
-    foreach($errors as $error) {
+    foreach ($errors as $error) {
         $app->addNotification($error, $app::TYPE_WARNING);
     }
 }

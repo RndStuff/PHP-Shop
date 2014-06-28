@@ -138,4 +138,4 @@ class Application
         }
         return $this->logger;
     }
-} 
+}

@@ -19,4 +19,4 @@ class PDO extends \PDO
         $this->logger->addInfo('PDO.exec: '.$statement);
         return parent::exec($statement);
     }
-} 
+}

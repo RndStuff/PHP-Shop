@@ -55,4 +55,4 @@ class Warenkorb
     {
         return isset($_SESSION[$this->key][$id]);
     }
-} 
+}

@@ -8,5 +8,3 @@ if ($app->getWarenkorb()->rmWareById($_GET['id'])) {
     $app->addNotification('Es ist ein Fehler aufgetreten');
 }
 $app->render('loeschen.twig');
-
-

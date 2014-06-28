@@ -28,9 +28,8 @@ $zahlungsArtKosten = $zahlungsArten[$_SESSION['kasse']['zmethode']];
 $gesamtPreis = $versandartKosten + $zahlungsArtKosten + $warenkorb->getPreis();
 
 
-if (isset($_POST['submit']))
-{
-    print_R($_SESSION);
+if (isset($_POST['submit'])) {
+
     $subject = 'Ihre Bstellung bei uns';
     $body = 'TODO'; //TODO
     $to = $_SESSION['kasse']['email'];
@@ -51,7 +50,7 @@ if (isset($_POST['submit']))
             .$land.'\', \''.$plz.'\', \''.$versandart.'\', \''.$zmethode.'\')';
         $app->getPdo()->beginTransaction();
         $app->getPdo()->exec($sql0);
-        foreach($_SESSION['warenkorb'] as $id) {
+        foreach ($_SESSION['warenkorb'] as $id) {
             $sql1 = 'INSERT INTO tbl_artikel_bestellungen '
                 .'(artikel_id, bestellung_id) '
                 .'VALUES ('.$id.', '.$app->getPdo()->lastInsertId().')';
@@ -75,9 +74,7 @@ if (isset($_POST['submit']))
 $app->render(
     'kasse2.twig',
     array(
-        'waren' => $korb,
+        'waren' => $warenkorb->getWaren(),
         'preis' => $gesamtPreis
     )
 );
-
-

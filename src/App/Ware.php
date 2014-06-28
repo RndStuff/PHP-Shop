@@ -36,4 +36,4 @@ class Ware
     {
         return $this->beschreibung;
     }
-} 
+}

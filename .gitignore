@@ -2,3 +2,4 @@
 PHP-Shop.iml
 /vendor/
 *.log
+composer.phar
