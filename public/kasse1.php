@@ -79,10 +79,9 @@ if (isset($_POST['submit'])) {
 
 
 $app->render(
-    'kasse1.twig',
+    'kasse1.php',
     array(
         'waren' => $app->getWarenkorb()->getWaren(),
         'preis' => $app->getWarenkorb()->getPreis(),
     )
 );
-

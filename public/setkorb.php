@@ -9,4 +9,4 @@ if (!isset($_GET['id'])) {
 $waren = $app->getWaren();
 $app->getWarenkorb()->addWare($waren[$_GET['id']]);
 $app->addNotification('Die Ware wurde Ihrem Warenkorb hinzugefuegt');
-$app->render('setkorb.twig');
+$app->render('setkorb.php');

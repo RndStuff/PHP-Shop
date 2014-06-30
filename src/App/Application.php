@@ -44,22 +44,17 @@ class Application
         return $this->pdo;
     }
 
-    public function getTwig()
-    {
-        if (!$this->twig) {
-            $loader = new Twig_Loader_Filesystem(__DIR__ . '/Views');
-            $this->twig = new Twig_Environment($loader, array(
-#                  'cache' => ROOT_PATH.'/tmp/twig/',
-            ));
-        }
-        return $this->twig;
-    }
 
     public function render($template, array $context = array())
     {
         $context['app'] = $this;
-        echo $this->getTwig()->render($template, $context);
-        exit(1);
+        foreach ($context as $key => $value) {
+            $$key = $value;
+        }
+        require_once(__DIR__.'/Views/header.php');
+        require_once(__DIR__.'/Views/'.$template);
+        require_once(__DIR__.'/Views/footer.php');
+        exit;
     }
 
     public function getWarenkorb()
@@ -113,7 +108,7 @@ class Application
         return $result;
     }
 
-    protected function loadConfig($env)
+    protected function loadConfig()
     {
         $this->conf = require(ROOT_PATH . '/config/config.php');
     }
@@ -124,10 +119,15 @@ class Application
         return (bool) preg_match($pattern, $email);
     }
 
-    public function mail($string, $string1, $string2)
+    public function mail($to, $subject, $message)
     {
-        $this->addNotification('TODO implemt app::mail');
-        return true;
+        if (mail($to, $subject, $message)) {
+            $this->getLogger()->addError('Sending mail to '.$to.' failed Subject: '.$subject);
+            return false;
+        } else {
+            $this->getLogger()->addDebug('Email to '.$to. 'successful');
+            return true;
+        }
     }
 
     private function getLogger()

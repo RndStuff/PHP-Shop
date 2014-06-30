@@ -7,4 +7,4 @@ if ($app->getWarenkorb()->rmWareById($_GET['id'])) {
 } else {
     $app->addNotification('Es ist ein Fehler aufgetreten');
 }
-$app->render('loeschen.twig');
+$app->render('loeschen.php');

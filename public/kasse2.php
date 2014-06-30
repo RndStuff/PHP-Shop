@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
 }
 
 $app->render(
-    'kasse2.twig',
+    'kasse2.php',
     array(
         'waren' => $warenkorb->getWaren(),
         'preis' => $gesamtPreis
