@@ -1,0 +1,19 @@
+.waren {
+
+}
+
+.ware {
+    width: 30%;
+    float: left;
+    padding-right: 3.333333%;
+}
+
+
+.notifications {
+    width: 300px;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    z-index: 9999;
+    display: block;
+}
