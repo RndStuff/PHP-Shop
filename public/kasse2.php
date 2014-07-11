@@ -2,7 +2,7 @@
 require_once(__DIR__.'/../vendor/autoload.php');
 $app = new \App\Application();
 
-$waren = $app->getWaren();
+$waren = $app->getWarenRepository()->getAllWaren();
 
 $zahlungsArten = array(
     'Vorkasseu' => 0.00,
@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
                 .'VALUES ('.$id.', '.$app->getPdo()->lastInsertId().')';
             $app->getPdo()->exec($sql1);
         }
+
         if ($app->getPdo()->commit()) {
             $app->addNotification('Ihre Bestellung wurde in unsere Datenbank übernommen');
             unset($_SESSION['warenkorb']);

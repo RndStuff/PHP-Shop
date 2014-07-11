@@ -16,8 +16,9 @@ class Application
     private $twig;
     private $env;
     private $logger;
-    private $warenkorb;
+    private $warenRepository;
 
+    private $warenkorb;
     const TYPE_SUCCESS = 'success';
     const TYPE_INFO = 'info';
     const TYPE_WARNING = 'warning';
@@ -65,23 +66,23 @@ class Application
         return $this->warenkorb;
     }
 
+
+    public function getWarenRepository()
+    {
+        if (!$this->warenRepository)
+        {
+            $this->warenRepository = new WarenRepository($this->getPdo());
+        }
+        return $this->warenRepository;
+    }
+
     /**
+     * @deprecated use WarenRepository instead
      * @return Ware[]
      */
     public function getWaren()
     {
-        $sql = 'SELECT * FROM tbl_artikel';
-        $result = $this->getPdo()->query($sql);
-        $waren = array();
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $waren[$row['id']] = new Ware(
-                $row['id'],
-                $row['bezeichnung'],
-                $row['preis'],
-                $row['beschreibung']
-            );
-        }
-        return $waren;
+        return $this->getWarenRepository()->getAllWaren();
     }
 
     public function redirect($url)
