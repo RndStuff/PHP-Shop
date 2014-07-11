@@ -131,41 +131,6 @@ class Application
         }
     }
 
-    /**
-     * @return Bestellung[]
-     */
-    public function getBestellungen()
-    {
-        return false;
-        /*
-        $sql = 'SELECT * FROM tbl_bestellung';
-        $bestellungen = array();
-        while ($row = $this->getPdo()->query($sql)->fetch(PDO::FETCH_ASSOC)) {
-            $bestellung = new Bestellung();
-            $bestellung->setId($row['id']);
-            $bestellung->setEmail($row['email']);
-            $bestellung->setLand($row['land']);
-            $bestellung->setName($row['name']);
-            $bestellung->setOrt($row['ort']);
-            $bestellung->setPlz($row['plz']);
-            $bestellung->setTime($row['time']);
-            $bestellung->setVersandArt($row['versantArt']);
-            $bestellung->setZusatz($row['zusatz']);
-
-            $sql = 'SELECT * FROM tbl_artikel_bestellung'
-                .' LEFT JOIN tbl_artikel'
-                    .'ON tbl_artikel_bestellung.bestellung_id = tbl_artikel.id'
-                .'WHERE bestellung_id';
-            $waren = array();
-            while ($innerRow = $this->getPdo()->query($sql)->fetch(PDO::FETCH_ASSOC))) {
-
-            }
-            $bestellungen[] = $bestellung;
-        }
-        return $waren;
-        */
-    }
-
     private function getLogger()
     {
         if (!$this->logger) {
