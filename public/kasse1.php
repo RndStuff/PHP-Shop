@@ -2,7 +2,7 @@
 require_once(__DIR__.'/../vendor/autoload.php');
 $app = new \App\Application();
 
-$waren = $app->getWaren();
+$waren = $app->getWarenRepository()->getAllWaren();
 
 $errors = array();
 if (isset($_POST['submit'])) {
