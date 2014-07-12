@@ -17,8 +17,9 @@ class Application
     private $env;
     private $logger;
     private $warenRepository;
-
+    private $bestellungenRepository;
     private $warenkorb;
+
     const TYPE_SUCCESS = 'success';
     const TYPE_INFO = 'info';
     const TYPE_WARNING = 'warning';
@@ -76,6 +77,16 @@ class Application
         return $this->warenRepository;
     }
 
+    public function getBestellungenRepository()
+    {
+        if (!$this->bestellungenRepository) {
+            $this->bestellungenRepository = new BestellungenRepository(
+                $this->getPdo(),
+                $this->getWarenRepository()
+            );
+        }
+        return $this->bestellungenRepository;
+    }
     /**
      * @deprecated use WarenRepository instead
      * @return Ware[]
