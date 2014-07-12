@@ -23,7 +23,7 @@ class WarenRepository
     {
         $sql = 'SELECT * FROM tbl_artikel WHERE id = '.intval($id);
         $result = $this->pdo->query($sql);
-        if ($row = $result->fetchColumn()) {
+        if ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             return self::createWareFromArray($row);
         }
         $ware = null;
