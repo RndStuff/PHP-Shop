@@ -6,7 +6,7 @@ if (!isset($_GET['id'])) {
     die("Kein Produkt wurde ausgew�hlt.");
 }
 
-$waren = $app->getWaren();
-$app->getWarenkorb()->addWare($waren[$_GET['id']]);
+$ware = $app->getWarenRepository()->getWareById($_GET['id']);
+$app->getWarenkorb()->addWare($ware);
 $app->addNotification('Die Ware wurde Ihrem Warenkorb hinzugefuegt');
 $app->render('setkorb.php');
