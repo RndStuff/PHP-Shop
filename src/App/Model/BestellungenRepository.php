@@ -1,9 +1,9 @@
 <?php
 
+namespace App\Model;
 
-namespace App;
-
-
+use App\PDO;
+use App\WarenRepository;
 
 class BestellungenRepository
 {

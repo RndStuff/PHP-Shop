@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Model;
+
+use App\PDO;
 
 class WarenRepository
 {
-
     /**
      * @var PDO
      */

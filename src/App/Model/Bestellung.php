@@ -1,7 +1,6 @@
 <?php
 
-
-namespace App;
+namespace App\Model;
 
 class Bestellung
 {
