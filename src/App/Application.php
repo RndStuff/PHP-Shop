@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Model\BestellungenRepository;
+use App\Model\Ware;
+use App\Model\WarenRepository;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Twig_Environment;
