@@ -139,6 +139,4 @@ class Bestellung
     {
         $this->waren[$ware->getId()] = $ware;
     }
-
 }
- 

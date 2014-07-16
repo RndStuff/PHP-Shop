@@ -7,8 +7,6 @@ use App\Model\Ware;
 use App\Model\WarenRepository;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Twig_Environment;
-use Twig_Loader_Filesystem;
 
 define('ROOT_PATH', __DIR__ . '/../..');
 
@@ -16,8 +14,6 @@ class Application
 {
     public $conf = array();
     private $pdo;
-    private $twig;
-    private $env;
     private $logger;
     private $warenRepository;
     private $bestellungenRepository;
@@ -73,10 +69,10 @@ class Application
 
     public function getWarenRepository()
     {
-        if (!$this->warenRepository)
-        {
+        if (!$this->warenRepository) {
             $this->warenRepository = new WarenRepository($this->getPdo());
         }
+
         return $this->warenRepository;
     }
 
