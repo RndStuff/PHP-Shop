@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use App\PDO;
-use App\WarenRepository;
 
 class BestellungenRepository
 {
