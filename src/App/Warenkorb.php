@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Model\Ware;
+
 class Warenkorb
 {
 
