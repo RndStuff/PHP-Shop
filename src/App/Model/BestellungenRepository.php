@@ -1,9 +1,8 @@
 <?php
 
+namespace App\Model;
 
-namespace App;
-
-
+use App\PDO;
 
 class BestellungenRepository
 {
@@ -35,7 +34,7 @@ class BestellungenRepository
 
     public function getById($id)
     {
-        $sql = 'SELECT * FROM tbl_bestellung WHERE id ='.intval($id);
+        $sql = 'SELECT * FROM tbl_bestellung WHERE id =' . intval($id);
         $result = $this->pdo->query($sql);
         return $this->createFromArray($result->fetchColumn());
     }
@@ -54,7 +53,7 @@ class BestellungenRepository
         $bestellung->setPlz($row['plz']);
         $bestellung->setStr($row['str']);
 
-        $sql = 'SELECT * FROM tbl_artikel_bestellungen WHERE bestellung_id = '.$bestellung->getId();
+        $sql = 'SELECT * FROM tbl_artikel_bestellungen WHERE bestellung_id = ' . $bestellung->getId();
         $result = $this->pdo->query($sql);
         while ($innerRow = $result->fetch(PDO::FETCH_ASSOC)) {
             $bestellung->addWare($this->warenRepository->getWareById($innerRow['artikel_id']));
@@ -62,4 +61,3 @@ class BestellungenRepository
         return $bestellung;
     }
 }
- 

@@ -1,7 +1,6 @@
 <?php
 
-
-namespace App;
+namespace App\Model;
 
 class Bestellung
 {
@@ -140,6 +139,4 @@ class Bestellung
     {
         $this->waren[$ware->getId()] = $ware;
     }
-
 }
- 

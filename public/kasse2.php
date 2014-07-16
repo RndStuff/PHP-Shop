@@ -27,9 +27,7 @@ $zahlungsArtKosten = $zahlungsArten[$_SESSION['kasse']['zmethode']];
 
 $gesamtPreis = $versandartKosten + $zahlungsArtKosten + $warenkorb->getPreis();
 
-
 if (isset($_POST['submit'])) {
-
     $subject = 'Ihre Bstellung bei uns';
     $body = 'TODO'; //TODO
     $to = $_SESSION['kasse']['email'];
@@ -69,7 +67,6 @@ if (isset($_POST['submit'])) {
     } else {
         $app->addNotification('Something went wrong', $app::TYPE_DANGER);
     }
-
 }
 
 $app->render(

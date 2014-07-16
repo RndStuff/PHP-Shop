@@ -7,7 +7,6 @@ $waren = $app->getWarenRepository()->getAllWaren();
 $errors = array();
 if (isset($_POST['submit'])) {
     if (isset($_POST['email']) && !empty($_POST['email'])) {
-
         if (!$app->validateEmail($_POST['email'])) {
             $_SESSION['kasse']['email'] = $_POST['email'];
         } else {
@@ -76,7 +75,6 @@ if (isset($_POST['submit'])) {
         $app->addNotification($error, $app::TYPE_WARNING);
     }
 }
-
 
 $app->render(
     'kasse1.php',
