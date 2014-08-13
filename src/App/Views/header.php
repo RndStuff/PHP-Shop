@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title><?php echo $app->conf['title']; ?></title>
     <link rel="stylesheet" href="assets/css/bootsketch.css" />
     <link rel="stylesheet" href="assets/css/phpShop.css" />
+    <meta charset="utf-8" />
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
